@@ -1,73 +1,55 @@
-// Register new user ---------------------------
+const API_BASE_URL = "https://nf-api.onrender.com";
+
+// Validate email format
+const validateEmail = (email) =>
+  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email);
+
+// Validate password length
+const validatePassword = (password) => password.length >= 6;
+
+// Register new user
 async function registerUser(url, userData) {
   try {
-    const postData = {
+    const response = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userData),
-    };
-    const response = await fetch(url, postData);
+    });
+
     const json = await response.json();
+    return json;
   } catch (error) {
-    //const errorMessage = "The user already exist";
-    //document.getElementById("error-message").textContent = errorMessage;
     console.log(error);
   }
 }
 
-// get info from sign in form
-const userToRegister = {};
+// Event listener for sign-up button
+document.getElementById("signup-button").addEventListener("click", async () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const errorMessageElement = document.getElementById("error-message");
 
-const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
-
-registerUser(registerUrl, userToRegister);
-
-// ---------------
-
-async function validateEmail() {
-  var emailInput = document.getElementById("email");
-  var emailError = document.getElementById("emailError");
-
-  var email = emailInput.value;
-
-  // Regular expression for basic email validation
-  var emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-  if (!email.match(emailRegex)) {
-    emailError.innerText = "Please enter a valid email address.";
-    emailInput.classList.add("error");
-    return false;
-  } else {
-    emailError.innerText = "";
-    emailInput.classList.remove("error");
-    return true;
+  if (!validateEmail(email)) {
+    errorMessageElement.textContent = "Invalid email format";
+    return;
   }
-}
 
-function validatePassword() {
-  var passwordInput = document.getElementById("password");
-  var passwordError = document.getElementById("passwordError");
-
-  var password = passwordInput.value;
-
-  if (password.length < 6) {
-    passwordError.innerText = "Password must be at least 6 characters.";
-    passwordInput.classList.add("error");
-    return false;
-  } else {
-    passwordError.innerText = "";
-    passwordInput.classList.remove("error");
-    return true;
+  if (!validatePassword(password)) {
+    errorMessageElement.textContent = "Invalid password length";
+    return;
   }
-}
 
-function signIn() {
-  if (validateEmail() && validatePassword()) {
-    // Here you can add code to perform the actual sign-in process
-    alert("Sign-in successful!");
-  }
-}
+  // Clear error message
+  errorMessageElement.textContent = "";
 
-//
+  // Get user information from form input
+  const user = {
+    email: `${email}`,
+    password: `${password}`,
+  };
+
+  const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
+  await registerUser(registerUrl, user);
+});

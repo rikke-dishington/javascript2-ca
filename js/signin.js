@@ -13,34 +13,28 @@ async function loginUser(url, userData) {
     const json = await response.json();
     const accessToken = json.accessToken;
     localStorage.setItem("accessToken", accessToken);
-
-    // Clear any previous error message
-    document.getElementById("error-message").textContent = "";
-
-    alert("Sign in successful!");
-    // Perform further actions after successful sign-in
+    return json;
   } catch (error) {
-    console.log(error);
+    errorMessageElement.textContent =
+      "User does not exist or invalid email/password.";
   }
 }
 
 // Event listener for sign-in button
-document.getElementById("signin-button").addEventListener("click", () => {
+document.getElementById("signup-button").addEventListener("click", () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+  const errorMessageElement = document.getElementById("error-message");
 
-  const storedUser = JSON.parse(localStorage.getItem(email));
+  // Clear error message
+  errorMessageElement.textContent = "";
 
-  if (storedUser && storedUser.password === password) {
-    const userToLogin = {
-      email: `${email}`,
-      password: `${password}`,
-    };
+  // Get user information from form input
+  const user = {
+    email: `${email}`,
+    password: `${password}`,
+  };
 
-    const loginUrl = `${API_BASE_URL}/api/v1/social/auth/login`;
-    loginUser(loginUrl, userToLogin);
-  } else {
-    document.getElementById("error-message").textContent =
-      "User does not exist or invalid email/password.";
-  }
+  const loginUrl = `${API_BASE_URL}/api/v1/social/auth/login`;
+  await loginUser(loginUrl, user);
 });
