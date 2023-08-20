@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Sign in" />
+    <title>Sign in to your account</title>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div>
+          <h1>Welcome</h1>
+          <form>
+            <div>
+              <label for="email">Email:</label>
+              <input type="text" id="email" name="email" required />
+              <div id="emailError" style="color: red"></div>
+            </div>
+            <div>
+              <label for="password">Password:</label>
+              <input type="password" id="password" name="password" required />
+              <div id="passwordError" style="color: red"></div>
+            </div>
+            <button type="button" onclick="signIn();">Sign In</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
