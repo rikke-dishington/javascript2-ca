@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Create a new post" />
+    <title>Create a new post</title>
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <main>
+      <div
+        class="
+          container
+          d-flex
+          flex-column
+          align-items-center
+          justify-content-center
+        "
+        style="height: 100vh"
+      >
+        <div class="row">
+          <div class="col-12">
+            <h1>Add a new post</h1>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <form action="/profile">
+            <div class="col-12 mt-4">
+              <label for="image" class="form-label">Select image</label>
+              <input
+                type="text"
+                class="form-control"
+                id="image"
+                name="image"
+                placeholder=""
+                required
+              />
+            </div>
+            <div class="col-12 mt-4">
+              <label for="description" class="form-label">Description</label>
+              <input
+                type="text"
+                class="form-control"
+                id="description"
+                name="description"
+                placeholder="Add a description"
+              />
+            </div>
+            <div class="col-12 mt-5">
+              <a class="btn btn-secondary" href="feed.html" role="button"
+                >Back</a
+              >
+              <a class="btn btn-primary" href="feed.html" role="button"
+                >Publish</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
