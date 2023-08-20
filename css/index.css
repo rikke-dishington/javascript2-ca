@@ -1,0 +1,12 @@
+#signin-button {
+  background-color: #0d05f2;
+  border: #0d05f2;
+  padding: 10px 20px;
+}
+
+#signin-button:hover {
+  background-color: white;
+  color: #0d05f2;
+  border: 2px solid #0d05f2;
+  padding: 10px 20px;
+}
