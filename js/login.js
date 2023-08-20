@@ -32,11 +32,18 @@ document.getElementById("signin-button").addEventListener("click", () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  const userToLogin = {
-    email: `${email}`,
-    password: `${password}`,
-  };
+  const storedUser = JSON.parse(localStorage.getItem(email));
 
-  const loginUrl = `${API_BASE_URL}/api/v1/social/auth/login`;
-  loginUser(loginUrl, userToLogin);
+  if (storedUser && storedUser.password === password) {
+    const userToLogin = {
+      email: `${email}`,
+      password: `${password}`,
+    };
+
+    const loginUrl = `${API_BASE_URL}/api/v1/social/auth/login`;
+    loginUser(loginUrl, userToLogin);
+  } else {
+    document.getElementById("error-message").textContent =
+      "User does not exist or invalid email/password.";
+  }
 });

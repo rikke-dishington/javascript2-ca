@@ -26,7 +26,7 @@ registerUser(registerUrl, userToRegister);
 
 // ---------------
 
-function validateEmail() {
+async function validateEmail() {
   var emailInput = document.getElementById("email");
   var emailError = document.getElementById("emailError");
 
