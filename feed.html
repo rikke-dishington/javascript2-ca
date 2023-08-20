@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Feed" />
+    <title>Discover or add a new post</title>
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="/feed/index.html">BrandName</a>
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/feed/index.html">Feed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/profile/index.html">Profile</a>
+              </li>
+            </ul>
+            <a class="btn btn-primary" href="/feed/create-post.html" role="button">New Post</a>
+          </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container mt-5">
+        <div class="row mb-5 text-center">
+          <div class="col-12 mt-4">
+            <h1>Discover</h1>
+          </div>
+          <div class="col-12 mt-4">
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </p>
+          </div>
+          <div class="col-12">
+            <form class="d-flex" role="search">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+          </div>
+        </div>
+        <div class="row mt-4">
+          <div class="col-4">
+            <div class="input-group">
+              <label class="input-group-text" for="orderby">Order by</label>
+              <select class="form-select" id="orderby">
+                <option selected>Choose...</option>
+                <option value="date">Latest</option>
+                <option value="trending">Trending</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row row-cols-2 row-cols-md-4 mt-4">
+          <div class="col my-4">
+            <img src="/images/profile-img.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/js.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/html.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/css.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/person.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/profile-img.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/js.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/html.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/css.png" class="img-fluid" alt="..." />
+          </div>
+          <div class="col my-4">
+            <img src="/images/person.png" class="img-fluid" alt="..." />
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>© BrandName 2023</p>
+    </footer>
+    </main>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
