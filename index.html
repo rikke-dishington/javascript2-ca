@@ -9,23 +9,18 @@
   <body>
     <main>
       <section>
-        <div>
-          <h1>Welcome</h1>
-          <form>
-            <div>
-              <label for="email">Email:</label>
-              <input type="text" id="email" name="email" required />
-              <div id="emailError" style="color: red"></div>
-            </div>
-            <div>
-              <label for="password">Password:</label>
-              <input type="password" id="password" name="password" required />
-              <div id="passwordError" style="color: red"></div>
-            </div>
-            <button type="button" onclick="signIn();">Sign In</button>
-          </form>
-        </div>
+        <h1>Sign In</h1>
+        <form id="signin-form">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" required />
+          <button type="button" id="signin-button">Sign In</button>
+        </form>
+        <div>Don't have an account yet? Register here</div>
+        <div id="error-message" style="color: red"></div>
       </section>
     </main>
+    <script type="module" src="js/login.js"></script>
   </body>
 </html>

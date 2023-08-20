@@ -1,3 +1,31 @@
+// Register new user ---------------------------
+async function registerUser(url, userData) {
+  try {
+    const postData = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    };
+    const response = await fetch(url, postData);
+    const json = await response.json();
+  } catch (error) {
+    //const errorMessage = "The user already exist";
+    //document.getElementById("error-message").textContent = errorMessage;
+    console.log(error);
+  }
+}
+
+// get info from sign in form
+const userToRegister = {};
+
+const registerUrl = `${API_BASE_URL}/api/v1/social/auth/register`;
+
+registerUser(registerUrl, userToRegister);
+
+// ---------------
+
 function validateEmail() {
   var emailInput = document.getElementById("email");
   var emailError = document.getElementById("emailError");
@@ -41,3 +69,5 @@ function signIn() {
     alert("Sign-in successful!");
   }
 }
+
+//
