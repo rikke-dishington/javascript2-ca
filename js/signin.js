@@ -21,9 +21,6 @@ async function loginUser(url, userData) {
     // Perform further actions after successful sign-in
   } catch (error) {
     console.log(error);
-
-    document.getElementById("error-message").textContent =
-      "Invalid email or password.";
   }
 }
 
