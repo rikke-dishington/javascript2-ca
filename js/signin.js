@@ -1,40 +1,47 @@
-const API_BASE_URL = "https://nf-api.onrender.com";
+const API_BASE_URL = "https://api.noroff.dev";
 
-async function loginUser(url, userData) {
+const errorMessageElement = document.getElementById("error-message");
+
+async function loginUser(url, data) {
   try {
     const postData = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userData),
+      body: JSON.stringify(data),
     };
+
     const response = await fetch(url, postData);
-    const json = await response.json();
-    const accessToken = json.accessToken;
-    localStorage.setItem("accessToken", accessToken);
-    return json;
+    console.log(response);
+
+    if (response.status === 200) {
+      // User exists and login is successful
+      const json = await response.json();
+      const accessToken = json.accessToken;
+      localStorage.setItem("accessToken", accessToken);
+      console.log(json);
+      window.location.href = "/feed.html";
+    } else if (response.status === 401) {
+      // User does not exist or invalid email/password
+      errorMessageElement.textContent =
+        "User does not exist or invalid email/password.";
+    } else {
+      // Handle other response status codes as needed
+      errorMessageElement.textContent = "An error occurred.";
+    }
   } catch (error) {
-    errorMessageElement.textContent =
-      "User does not exist or invalid email/password.";
+    errorMessageElement.textContent = "An error occurred.";
   }
 }
 
-// Event listener for sign-in button
-document.getElementById("signup-button").addEventListener("click", () => {
+document.getElementById("signin-button").addEventListener("click", () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const errorMessageElement = document.getElementById("error-message");
-
-  // Clear error message
-  errorMessageElement.textContent = "";
-
-  // Get user information from form input
   const user = {
-    email: `${email}`,
-    password: `${password}`,
+    email: email,
+    password: password,
   };
 
-  const loginUrl = `${API_BASE_URL}/api/v1/social/auth/login`;
-  await loginUser(loginUrl, user);
+  loginUser(`${API_BASE_URL}/api/v1/social/auth/login`, user);
 });
