@@ -40,26 +40,15 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
-          <div class="col-12">
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-primary" type="submit">Search</button>
-            </form>
+          <div class="col-12 mt-4">
+            <label for="search">Search:</label>
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button class="btn btn-primary" id="searchButton">Search</button>
           </div>
         </div>
         <div class="col-12 mt-4">
           <label for="tagFilter">Filter by Tag:</label>
           <input type="text" id="tagFilter" placeholder="Enter a tag">
-          <label for="activeFilter">FIlter by State:</label>
-          <select id="activeFilter">
-            <option value="true">Active</option>
-            <option value="false">Inactive</option>
-          </select>
           <button id="filterButton" class="btn btn-primary">Filter</button>
         </div>
         <div class="row row-cols-2 row-cols-md-4 mt-4" id="all-posts"></div>

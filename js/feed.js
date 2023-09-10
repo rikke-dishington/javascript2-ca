@@ -23,7 +23,7 @@ async function fetchWithToken(url, method = "GET") {
   }
 }
 
-// Display all posts
+// Function to display all posts
 async function displayPosts() {
   try {
     const url = `${API_BASE_URL}/api/v1/social/posts`;
@@ -31,21 +31,21 @@ async function displayPosts() {
 
     feedContainer.innerHTML = "";
 
-    data.forEach((post) => {
+    for (const post of data) {
       const { id, tags, title, body, media, created } = post;
 
       const postElement = document.createElement("div");
       postElement.classList.add("col", "my-4");
       postElement.innerHTML = `
-        <img src="${media}" class="img-fluid" />
-        <h3>${title}</h3>
-        <p>${body}</p>
-        <p>Created: ${created}</p>
-        <p>Tags: ${tags}</p>
-      `;
+          <img src="${media}" class="img-fluid" />
+          <h3>${title}</h3>
+          <p>${body}</p>
+          <p>Created: ${created}</p>
+          <p>Tags: ${tags}</p>
+        `;
 
       feedContainer.appendChild(postElement);
-    });
+    }
   } catch (error) {
     console.error(error);
     feedContainer.innerHTML = "Oh no! An error occurred";
@@ -54,15 +54,9 @@ async function displayPosts() {
 
 displayPosts();
 
-// Filter by
-// Add event listener for the filter button
-const filterButton = document.getElementById("filterButton");
-filterButton.addEventListener("click", filterPosts);
-
 // Function to filter posts based on the entered tag
 async function filterPosts() {
   const tagFilter = document.getElementById("tagFilter").value.trim();
-  const activeFilter = document.getElementById("activeFilter").value;
 
   if (tagFilter === "") {
     // If the filter is empty, display all posts
@@ -71,9 +65,7 @@ async function filterPosts() {
   }
 
   try {
-    const url = `${API_BASE_URL}/api/v1/social/posts?_tag=${encodeURIComponent(
-      tagFilter
-    )}&_active=${activeFilter}`;
+    const url = `${API_BASE_URL}/api/v1/social/posts?_tag=${tagFilter}`;
     const data = await fetchWithToken(url);
 
     feedContainer.innerHTML = "";
@@ -98,3 +90,56 @@ async function filterPosts() {
     feedContainer.innerHTML = "Oh no! An error occurred while filtering";
   }
 }
+
+// Add event listeners
+const filterButton = document.getElementById("filterButton");
+filterButton.addEventListener("click", filterPosts);
+
+/*
+// Search
+// Function to search and filter posts based on a search query
+async function searchPosts() {
+  const searchInput = document.getElementById("searchInput");
+
+  if (searchInput === "") {
+    // If the search query is empty, display all posts
+    displayPosts();
+    return;
+  }
+
+  const searchText = searchInput.value.toLowerCase();
+
+  try {
+    const url = `${API_BASE_URL}/api/v1/social/posts?_q=${encodeURIComponent(
+      searchInput
+    )}&_fields=title,body,created`; // Add _fields parameter to specify the fields to search in
+    const data = await fetchWithToken(url);
+
+    feedContainer.innerHTML = "";
+
+    data.forEach((post) => {
+      const { id, tags, title, body, media, created } = post;
+
+      const postElement = document.createElement("div");
+      postElement.classList.add("col", "my-4");
+      postElement.innerHTML = `
+          <img src="${media}" class="img-fluid" />
+          <h3>${title}</h3>
+          <p>${body}</p>
+          <p>Created: ${created}</p>
+          <p>Tags: ${tags}</p>
+        `;
+
+      feedContainer.appendChild(postElement);
+    });
+  } catch (error) {
+    console.error(error);
+    feedContainer.innerHTML = "Oh no! An error occurred while searching";
+  }
+}
+
+// Add event listeners
+const searchButton = document.getElementById("searchButton");
+searchButton.addEventListener("click", searchPosts);
+
+*/
