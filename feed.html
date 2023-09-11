@@ -9,19 +9,20 @@
       rel="stylesheet"
       href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
     />
-    <link rel="stylesheet" href="/css/style.css" />
+    <script defer type="module" src="js/feed.js"></script>
+  </head>
   </head>
   <body>
     <header>
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/feed/index.html">BrandName</a>
+          <a class="navbar-brand" href="feed.html">BrandName</a>
           <ul class="navbar-nav me-auto">
               <li class="nav-item">
-                <a class="nav-link" href="/feed/index.html">Feed</a>
+                <a class="nav-link" href="feed.html">Feed</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/profile/index.html">Profile</a>
+                <a class="nav-link" href="feed.html">Profile</a>
               </li>
             </ul>
             <a class="btn btn-primary" href="/feed/create-post.html" role="button">New Post</a>
@@ -39,62 +40,18 @@
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.
             </p>
           </div>
-          <div class="col-12">
-            <form class="d-flex" role="search">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
-              />
-              <button class="btn btn-primary" type="submit">Search</button>
-            </form>
+          <div class="col-12 mt-4">
+            <label for="search">Search:</label>
+            <input type="text" id="searchInput" placeholder="Search..." />
+            <button class="btn btn-primary" id="searchButton">Search</button>
           </div>
         </div>
-        <div class="row mt-4">
-          <div class="col-4">
-            <div class="input-group">
-              <label class="input-group-text" for="orderby">Order by</label>
-              <select class="form-select" id="orderby">
-                <option selected>Choose...</option>
-                <option value="date">Latest</option>
-                <option value="trending">Trending</option>
-              </select>
-            </div>
-          </div>
+        <div class="col-12 mt-4">
+          <label for="tagFilter">Filter by Tag:</label>
+          <input type="text" id="tagFilter" placeholder="Enter a tag">
+          <button id="filterButton" class="btn btn-primary">Filter</button>
         </div>
-        <div class="row row-cols-2 row-cols-md-4 mt-4">
-          <div class="col my-4">
-            <img src="/images/profile-img.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/js.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/html.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/css.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/person.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/profile-img.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/js.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/html.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/css.png" class="img-fluid" alt="..." />
-          </div>
-          <div class="col my-4">
-            <img src="/images/person.png" class="img-fluid" alt="..." />
-          </div>
-        </div>
+        <div class="row row-cols-2 row-cols-md-4 mt-4" id="all-posts"></div>
       </div>
     </main>
     <footer>
