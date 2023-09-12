@@ -1,3 +1,7 @@
+const API_BASE_URL = "https://api.noroff.dev";
+const feedContainer = document.getElementById("all-posts");
+const token = localStorage.getItem("accessToken");
+
 // Function to create a new post on the API
 async function createPostOnAPI(postData) {
   try {
