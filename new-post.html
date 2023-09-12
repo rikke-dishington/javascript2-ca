@@ -1,15 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Create a new post" />
-    <title>Create a new post</title>
-    <link
-      rel="stylesheet"
-      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" href="/css/style.css" />
+    <!-- ... (head content) -->
   </head>
   <body>
     <main>
@@ -29,39 +21,37 @@
           </div>
         </div>
         <div class="row mt-4">
-          <form action="/profile">
+          <form id="createPostForm">
+            <!-- Add an ID to the form for JavaScript interaction -->
             <div class="col-12 mt-4">
-              <label for="image" class="form-label">Select image</label>
+              <label for="title" class="form-label">Title</label>
               <input
                 type="text"
                 class="form-control"
-                id="image"
-                name="image"
-                placeholder=""
+                id="title"
+                name="title"
+                placeholder="Add a title"
                 required
               />
             </div>
             <div class="col-12 mt-4">
-              <label for="description" class="form-label">Description</label>
+              <label for="body" class="form-label">Description</label>
               <input
                 type="text"
                 class="form-control"
-                id="description"
-                name="description"
+                id="body"
+                name="body"
                 placeholder="Add a description"
               />
             </div>
             <div class="col-12 mt-5">
-              <a class="btn btn-secondary" href="feed.html" role="button"
-                >Back</a
-              >
-              <a class="btn btn-primary" href="feed.html" role="button"
-                >Publish</a
-              >
+              <button type="submit" class="btn btn-primary">Publish</button>
             </div>
           </form>
         </div>
       </div>
     </main>
+    <script defer type="module" src="js/createitem.js"></script>
+    <!-- Include your JavaScript file -->
   </body>
 </html>
