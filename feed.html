@@ -12,31 +12,37 @@
     <script defer type="module" src="js/feed.mjs"></script>
   </head>
   <body>
-    <header>
+    <header class="bg-primary">
       <nav class="navbar navbar-expand-lg">
         <div class="container-fluid">
-          <a class="navbar-brand" href="feed.html">BrandName</a>
+          <a class="navbar-brand text-light" href="feed.html">SoMe</a>
           <ul class="navbar-nav me-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="feed.html">Feed</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="feed.html">Profile</a>
-              </li>
-            </ul>
-            <a class="btn btn-primary" href="new-post.html" role="button">New Post</a>
-          </div>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="feed.html">Feed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-light" href="profile.html">Profile</a>
+            </li>
+          </ul>
+          <a
+            class="btn btn-light text-primary"
+            href="new-post.html"
+            role="button"
+            >New Post</a
+          >
+        </div>
       </nav>
     </header>
     <main>
       <div class="container mt-5">
-        <div class="row mb-5 text-center">
-          <div class="col-12 mt-4">
-            <h1>Discover</h1>
+        <div class="row">
+          <div class="col-12 text-center">
+            <h1>Feed</h1>
           </div>
-          <div class="col-12 mt-4">
+          <div class="col-12 text-center">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididu.
             </p>
           </div>
           <div class="col-12 mt-4">
@@ -46,17 +52,14 @@
           </div>
           <div class="col-12 mt-4">
             <label for="tagFilter">Filter by Tag:</label>
-            <input type="text" id="tagFilter" placeholder="Enter a tag">
+            <input type="text" id="tagFilter" placeholder="Enter a tag" />
             <button id="tagFilterButton" class="btn btn-primary">Filter</button>
           </div>
           <div class="row row-cols-2 row-cols-md-4 mt-4" id="all-posts"></div>
         </div>
       </div>
     </main>
-    <footer>
-      <p>© BrandName 2023</p>
-    </footer>
-    </main>
+    <footer class="bg-primary text-center text-light p-2">© SoMe 2023</footer>
     <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
