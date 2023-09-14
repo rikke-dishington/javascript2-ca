@@ -25,7 +25,7 @@ function displayPosts(posts) {
     const { id, tags, title, body, media } = post;
 
     const postElement = document.createElement("div");
-    postElement.classList.add("col", "my-4");
+    postElement.classList.add("row", "my-4");
     postElement.innerHTML = `
         <img src="${media}" class="img-fluid" />
         <a href="post.html?id=${id}"

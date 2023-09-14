@@ -35,6 +35,7 @@ async function createPost(event) {
     const response = await fetch(API_POSTS_URL, postOptions);
 
     if (response.ok) {
+      window.location.href = "feed.html";
       // Post was successfully created
       console.log("Post created successfully");
     } else {
