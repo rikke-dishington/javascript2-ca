@@ -22,15 +22,17 @@ function displayPosts(posts) {
   clearFeedContainer();
 
   for (const post of posts) {
-    const { tags, title, body, media } = post;
+    const { id, tags, title, body, media } = post;
 
     const postElement = document.createElement("div");
     postElement.classList.add("col", "my-4");
     postElement.innerHTML = `
+    <a href="post.html?id=${id}"
         <img src="${media}" class="img-fluid" />
         <h3>${title}</h3>
         <p>#${tags}</p>
         <p>${body}</p>
+    </a>
       `;
 
     feedContainer.appendChild(postElement);
