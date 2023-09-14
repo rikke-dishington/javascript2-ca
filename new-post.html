@@ -1,57 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- ... (head content) -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="New Post" />
+    <title>Publish a new post</title>
+    <link
+      rel="stylesheet"
+      href="/node_modules/bootstrap/dist/css/bootstrap.min.css"
+    />
+    <script defer type="module" src="js/createitem.mjs"></script>
   </head>
   <body>
-    <main>
-      <div
-        class="
-          container
-          d-flex
-          flex-column
-          align-items-center
-          justify-content-center
-        "
-        style="height: 100vh"
-      >
-        <div class="row">
-          <div class="col-12">
-            <h1>Add a new post</h1>
+    <header class="bg-primary">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand text-light" href="feed.html">SoMe</a>
+          <ul class="navbar-nav me-auto">
+              <li class="nav-item">
+                <a class="nav-link text-light" href="feed.html">Feed</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link text-light" href="profile.html">Profile</a>
+              </li>
+            </ul>
+            <a class="btn btn-light text-primary" href="new-post.html" role="button">New Post</a>
           </div>
-        </div>
-        <div class="row mt-4">
-          <form id="createPostForm">
-            <!-- Add an ID to the form for JavaScript interaction -->
-            <div class="col-12 mt-4">
-              <label for="title" class="form-label">Title</label>
-              <input
-                type="text"
-                class="form-control"
-                id="title"
-                name="title"
-                placeholder="Add a title"
-                required
-              />
-            </div>
-            <div class="col-12 mt-4">
-              <label for="body" class="form-label">Description</label>
-              <input
-                type="text"
-                class="form-control"
-                id="body"
-                name="body"
-                placeholder="Add a description"
-              />
-            </div>
-            <div class="col-12 mt-5">
-              <button type="submit" class="btn btn-primary">Publish</button>
-            </div>
-          </form>
-        </div>
-      </div>
+      </nav>
+    </header>
+    <main>
+      <div class="container mt-5 mb-5">
+        <div class="row">
+          <div class="col-12 bg-primary text-light p-4">
+            <form class="mx-auto" style="max-width: 400px;" id="newPostForm">
+              <h2>New Post</h2>
+              <div class="mb-3">
+                <label for="postImage" class="form-label">Image:</label>
+                <input class="form-control border border-light" type="url" id="postImage" placeholder="Image...">
+              </div>
+              <div class="mb-3">
+                <label for="postTitle" class="form-label">Title:</label>
+                <input class="form-control border border-light" type="text" id="postTitle" placeholder="Title..." required>
+              </div>
+              <div class="mb-3">
+                <label for="postDescription" class="form-label">Description:</label>
+                <textarea class="form-control border border-light" id="postDescription" rows="3" placeholder="Description..."></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="postTag" class="form-label">Tag:</label>
+                <input class="form-control border border-light" type="text" id="postTag" placeholder="Tag...">
+              </div>
+              <button class="btn btn-light text-primary border border-light btn-block" id="newPostButton">Publish</button>
+            </form>
+          </div>
     </main>
-    <script defer type="module" src="js/createitem.js"></script>
-    <!-- Include your JavaScript file -->
+    <footer class="bg-primary text-center text-light p-2">©BrandName 2023</footer>
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>
