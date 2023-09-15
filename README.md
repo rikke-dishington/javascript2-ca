@@ -49,5 +49,5 @@ Contributions, issues, and feature requests are welcome! Please fork the repo an
 Clone the forked repo:
 
 ```bash
-$ git clone https://github.com/YOUR-USERNAME/community-science-museum
+$ git clone https://github.com/YOUR-USERNAME/javascript2-ca
 ```
