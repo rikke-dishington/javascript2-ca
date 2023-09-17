@@ -68,6 +68,7 @@ function populateEditForm(title, tags, body, media) {
 }
 
 document.addEventListener("click", function (event) {
+  event.preventDefault();
   if (event.target.id === "save-edited-post-button") {
     handleEditFormSubmission();
   }
