@@ -1,3 +1,11 @@
+/**
+ * Retrieves and edits a post's data
+ * from the API and populates an edit form.
+ * @function fetchPostDataAndEdit
+ * @async
+ * @throws {Error} If an error occurs during data fetching or processing.
+ */
+
 const queryString = document.location.search;
 const params = new URLSearchParams(queryString);
 const id = params.get("id");
@@ -39,6 +47,14 @@ async function fetchPostDataAndEdit() {
   }
 }
 
+/**
+ * Populates an edit form with post data.
+ * @function populateEditForm
+ * @param {string} title - The post's title.
+ * @param {string} tags - The post's tags.
+ * @param {string} body - The post's body.
+ * @param {string} media - The post's media URL.
+ */
 function populateEditForm(title, tags, body, media) {
   const editForm = document.createElement("form");
   editForm.innerHTML = `
@@ -68,10 +84,19 @@ function populateEditForm(title, tags, body, media) {
 }
 
 document.addEventListener("click", function (event) {
+  event.preventDefault();
   if (event.target.id === "save-edited-post-button") {
     handleEditFormSubmission();
   }
 });
+
+/**
+ * Handles the submission of an edit form, updates the post data
+ * and redirects to the post page on success.
+ * @function handleEditFormSubmission
+ * @async
+ * @throws {Error} If an error occurs during the form submission or data update.
+ */
 
 async function handleEditFormSubmission() {
   const editedPostData = {
@@ -98,7 +123,7 @@ async function handleEditFormSubmission() {
     // Redirect to the post page after successful update
     window.location.href = `feed.html`;
 
-    // Handle successful update, e.g., show a success message or redirect
+    // Handle successful update
     console.log("Post updated successfully");
   } catch (error) {
     console.error("An error occurred while updating the post", error);
