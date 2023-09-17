@@ -1,9 +1,24 @@
+/**
+ * The base URL for the API.
+ * @type {string}
+ * The URL for posting new social media posts.
+ * @type {string}
+ * The access token retrieved from local storage for API authorization.
+ * @type {string|null}
+ */
+
 // Constants
 const API_BASE_URL = "https://api.noroff.dev";
 const API_POSTS_URL = API_BASE_URL + "/api/v1/social/posts";
 const token = localStorage.getItem("accessToken");
 
-// Function to handle form submission
+/**
+ * Handles the submission to create create a new post
+ * and send it to the api with the POST method
+ * @param {Event} event - The form submission event (publish button).
+ * @param {string} [method="POST"] - The HTTP method to use for the api request.
+ */
+
 async function createPost(event) {
   event.preventDefault();
 
@@ -36,10 +51,7 @@ async function createPost(event) {
 
     if (response.ok) {
       window.location.href = "feed.html";
-      // Post was successfully created
-      console.log("Post created successfully");
     } else {
-      console.error("Error creating post");
     }
   } catch (error) {
     console.error("An error occurred", error);

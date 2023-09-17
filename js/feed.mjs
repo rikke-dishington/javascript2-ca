@@ -1,6 +1,26 @@
+/**
+ * Imports the fetchWithToken function from the authentication module.
+ * @module authentication/authentication.mjs
+ */
 // Imports
 import { fetchWithToken } from "./authentication/authentication.mjs";
 
+/**
+ * The base URL for API requests.
+ * @constant {string}
+ * The URL for retrieving posts from the API.
+ * @constant {string}
+ * The HTML element where all posts will be displayed.
+ * @type {HTMLElement}
+ * The HTML input element used for tag filtering.
+ * @type {HTMLInputElement}
+ * The HTML input element used for search.
+ * @type {HTMLInputElement}
+ * The HTML button element used to trigger tag filtering.
+ * @type {HTMLButtonElement}
+ * The HTML button element used to trigger searching.
+ * @type {HTMLButtonElement}
+ */
 // Constants
 const API_BASE_URL = "https://api.noroff.dev";
 const API_POSTS_URL = API_BASE_URL + "/api/v1/social/posts";
@@ -10,14 +30,27 @@ const searchInput = document.getElementById("searchInput");
 const tagFilterButton = document.getElementById("tagFilterButton");
 const searchButton = document.getElementById("searchButton");
 
+/**
+ * An array to store all posts for filtering.
+ * @type {Array}
+ */
+
 let allPosts = []; // Store all posts to filter them later
 
-// Function to clear the feed container
+/**
+ * Clears the feed container by removing its contents.
+ * @function clearFeedContainer
+ */
+
 function clearFeedContainer() {
   feedContainer.innerHTML = "";
 }
 
-// Function to display posts
+/**
+ * Displays posts in the feed container.
+ * @function displayPosts
+ * @param {Array} posts - An array of posts to display.
+ */
 function displayPosts(posts) {
   clearFeedContainer();
 
@@ -39,7 +72,13 @@ function displayPosts(posts) {
   }
 }
 
-// Function to fetch and display posts
+/**
+ * Fetches posts from the API with authorization and displays them.
+ * @async
+ * @function fetchAndDisplayPosts
+ * @param {string} url - The URL to fetch posts from.
+ * @throws {Error} If an error occurs during the post retrieval or network request.
+ */
 async function fetchAndDisplayPosts(url) {
   try {
     const data = await fetchWithToken(url);
@@ -51,7 +90,10 @@ async function fetchAndDisplayPosts(url) {
   }
 }
 
-// Function to filter posts by tag or search query
+/**
+ * Filters posts based on tag or search query and updates the display.
+ * @function filterPosts
+ */
 function filterPosts() {
   const tagFilter = tagFilterInput.value.trim();
   const searchQuery = searchInput.value.trim().toLowerCase();

@@ -1,6 +1,16 @@
+/**
+ * The base URL for API requests.
+ * @type {string}
+ */
 const API_BASE_URL = "https://api.noroff.dev";
 
-// Validate name format and return an error message if invalid
+/**
+ * Validates the format of a user's name and
+ * returns an error message if invalid.
+ * @function validateUserName
+ * @param {string} name - The user's name to validate.
+ * @returns {string|null} An error message if the name format is invalid; otherwise, null.
+ */
 
 const validateUserName = (name) => {
   const errorMessageElement = document.getElementById("name-error-message");
@@ -14,7 +24,14 @@ const validateUserName = (name) => {
   }
 };
 
-// Validate email format and that it ends with "@noroff.no" or "@stud.noroff.no" and return an error message if invalid
+/**
+ * Validates the format of a user's email and checks if it ends with "@noroff.no" or "@stud.noroff.no".
+ *
+ * @function validateEmail
+ * @param {string} email - The user's email to validate.
+ * @returns {string|null} An error message if the email format is invalid or doesn't match the expected domain; otherwise, null.
+ */
+
 const validateEmail = (email) => {
   const errorMessageElement = document.getElementById("email-error-message");
   const emailFormatRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
@@ -34,7 +51,14 @@ const validateEmail = (email) => {
   }
 };
 
-// Validate password length and return an error message if invalid
+/**
+ * Validates the length of a user's password
+ * and returns an error message if invalid.
+ * @function validatePassword
+ * @param {string} password - The user's password to validate.
+ * @returns {string|null} An error message if the password length is insufficient; otherwise, null.
+ */
+
 const validatePassword = (password) => {
   const errorMessageElement = document.getElementById("password-error-message");
   if (password.length >= 8) {
@@ -46,6 +70,19 @@ const validatePassword = (password) => {
   }
 };
 
+/**
+ * Registers a new user by sending a POST request
+ * with user data to the specified URL.
+ * @async
+ * @function registerUser
+ * @param {string} url - The URL to which the registration request is sent.
+ * @param {Object} data - An object containing user registration data.
+ * @param {string} data.name - The user's name.
+ * @param {string} data.email - The user's email.
+ * @param {string} data.password - The user's password.
+ * @returns {Promise<Object|null>} A Promise that resolves to the JSON response or null if an error occurs.
+ * @throws {Error} If an error occurs during the registration process or network request.
+ */
 // Register new user
 async function registerUser(url, data) {
   try {
@@ -66,6 +103,12 @@ async function registerUser(url, data) {
     console.log(error);
   }
 }
+
+/**
+ * Event listener for the "Sign Up" button click event.
+ * Retrieves user input, performs validation, and initiates user registration.
+ * @event
+ */
 
 document.getElementById("signup-button").addEventListener("click", () => {
   const userName = document.getElementById("userName").value;
